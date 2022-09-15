@@ -1,0 +1,1 @@
+require "Battle/Scene/BattleScene"
