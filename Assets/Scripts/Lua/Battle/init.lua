@@ -1,4 +1,5 @@
-require "Battle/Scene/init"
+require "Battle/BattleScene/init"
 require "Battle/Actor/init"
 require "Battle/Manager/init"
 require "Battle/Skill/init"
+require "Battle/Buff/init"

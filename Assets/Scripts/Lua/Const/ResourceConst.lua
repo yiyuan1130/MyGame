@@ -1,0 +1,5 @@
+ResourceConst = {
+    ResType = {
+        Actor = "Actor",
+    }
+}

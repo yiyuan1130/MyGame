@@ -6,7 +6,8 @@ function BattleSceneManager.Init()
 end
 
 function BattleSceneManager.Update(deltaTime)
-    this.TestInput()
+    -- this.TestKeyboardInput()
+    this.TestMouseInput()
     this.instance.Update(deltaTime)
 end
 
@@ -14,7 +15,36 @@ function BattleSceneManager.Close()
 end
 
 --- 
-function BattleSceneManager.TestInput()
+local isMouseInput = false
+local startMousePos
+function BattleSceneManager.TestMouseInput()
+    if Input.GetMouseButtonDown(0) then
+        isMouseInput = true
+        startMousePos = Vector2(Input.mousePosition.x, Input.mousePosition.y)
+    end
+    if Input.GetMouseButtonUp(0) then
+        isMouseInput = false
+    end
+    if isMouseInput then
+        if Input.GetMouseButton(0) then
+            local curPos = Vector2(Input.mousePosition.x, Input.mousePosition.y)
+            local vec = curPos - startMousePos
+            EventManager.SendEvent(EventId.GetInputMove, vec)
+        end
+    end
+end
+function BattleSceneManager.TestKeyboardInput()
+    -- 技能
+    if Input.GetKeyDown(KeyCode.J) then -- 普攻
+        
+    end
+    if Input.GetKeyDown(KeyCode.J) then -- 技能1
+        
+    end
+    if Input.GetKeyDown(KeyCode.J) then -- 技能2
+        
+    end
+    -- 移动
     if Input.GetKey(KeyCode.W) then
         if Input.GetKey(KeyCode.A) then
             EventManager.SendEvent(EventId.GetInputMove, Vector2(-1, 1))

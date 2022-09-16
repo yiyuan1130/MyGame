@@ -1,0 +1,1 @@
+local BuffManager = ClassStatic("BuffManager")

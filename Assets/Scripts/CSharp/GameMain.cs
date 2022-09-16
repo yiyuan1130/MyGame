@@ -32,7 +32,9 @@ public class GameMain : MonoBehaviour
 
     void Start()
     {
-        
+        //GameObject go = Resources.Load<GameObject>("players/playerPrefab");
+        //GameObject player = Instantiate(go);
+        //player.name = "player11111";
     }
 
     // Update is called once per frame

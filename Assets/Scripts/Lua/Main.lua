@@ -6,6 +6,8 @@ Quaternion = CS.UnityEngine.Quaternion
 Input = CS.UnityEngine.Input
 KeyCode = CS.UnityEngine.KeyCode
 Time = CS.UnityEngine.Time
+Resources = CS.UnityEngine.Resources
+Mathf = CS.UnityEngine.Mathf
 
 --------------------------
 require "Util/init"
@@ -19,9 +21,10 @@ Main = {
 local this = Main
 function Main:Init()
     this.updateList = {}
-    ActorManager.Init()
+    ResourcesManager.Init()
     InstanceIdManager.Init()
     EventManager.Init()
+    ActorManager.Init()
     BattleSceneManager.Init()
 
     this.AddUpdates()

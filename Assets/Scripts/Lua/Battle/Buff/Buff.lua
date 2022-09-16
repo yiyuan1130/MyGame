@@ -1,0 +1,1 @@
+local Buff = Class("Buff")
