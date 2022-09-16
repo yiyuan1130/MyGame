@@ -1,3 +1,4 @@
-require "Battle/Actor/ActorBase"
-require "Battle/Actor/ActorPlayer"
+require "Battle/Actor/Component/init"
+require "Battle/Actor/BaseActor"
+require "Battle/Actor/PlayerActor"
 require "Battle/Actor/ActorManager"

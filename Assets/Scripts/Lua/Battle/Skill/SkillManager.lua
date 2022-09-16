@@ -1,39 +1,49 @@
 local SkillManager = ClassStatic("SkillManager")
 local this = SkillManager
 function SkillManager.Init()
-    this.scriptDict = {}
-    this.skillDict = {}
+    this.scriptDic = {}
+    this.skillDic = {}
     this.delList = {}
 end
 
 function SkillManager.CreateSkill(skillScript, data)
     local id = InstanceIdManager.GetIdByType(InstanceIdManager.IDType.Skill)
-    local scriptPath = string.format("Battle/Skill/SkillScripts/%s", skillScript)
-    if not this.scriptDict[skillScript] then
-        local skillScript = require(scriptPath)
-        this.scriptDict[skillScript] = skillScript
+    local skillTemplate
+    if not this.scriptDic[skillScript] then
+        local scriptPath = string.format("Battle/Skill/SkillScripts/%s", skillScript)
+        skillTemplate = require(scriptPath)
+        this.scriptDic[skillScript] = skillTemplate
+    else
+        skillTemplate = this.scriptDic[skillScript]
     end
-    local skill = Skill.New(id, skillScript, data)
-    this.skillDict[id] = skill
+    local skill = Skill.New(id, skillTemplate, data)
+    this.skillDic[id] = skill
+    return skill
 end
 
 function SkillManager.RemoveSkill(id)
-    table.insert(this.delList, id)
+    local skill = this.skillDic[id]
+    if skill then
+        table.insert(this.delList, id)
+        skill.Close()
+    end
 end
 
 function SkillManager.Update(delteTime)
-    for i = #this.delList, 1, -1 do
-        local id = this.delList[i]
-        table.remove(this.delList, i)
-        this.skillDict[id] = nil
+    if #this.delList > 0 then
+        for i = #this.delList, 1, -1 do
+            local id = this.delList[i]
+            table.remove(this.delList, i)
+            this.skillDic[id] = nil
+        end
     end
-    for id, skill in pairs(this.skillDict) do
+    for id, skill in pairs(this.skillDic) do
         skill:Update(delteTime)
     end
 end
 
 function SkillManager.Close()
-    this.skillDict = nil
-    this.scriptDict = nil
+    this.skillDic = nil
+    this.scriptDic = nil
     this.delList = nil
 end

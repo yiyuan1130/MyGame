@@ -1,7 +1,8 @@
 local ResourcesManager = ClassStatic("ResourcesManager")
 local this = ResourcesManager
 ResourcesManager.ResourcePath = {
-    Actor = "prefabs/actors/"
+    Actor = "prefabs/actors/",
+    Effect = "effects/"
 }
 function ResourcesManager.Init()
     this.poolParentDict = {}

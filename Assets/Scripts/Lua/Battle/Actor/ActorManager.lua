@@ -9,21 +9,27 @@ function ActorManager.CreateActor(playerData, actorType)
     local actor
     local id = InstanceIdManager.GetIdByType(InstanceIdManager.IDType.Actor)
     if actorType == ActorConst.ActorType.Player then
-        actor = ActorPlayer.New(id, playerData)
+        actor = PlayerActor.New(id, playerData)
     end
     this.actorDic[id] = actor
     return actor
 end
 
 function ActorManager.RemoveActor(id)
-    table.insert(this.delList, id)
+    local actor = this.actorDic[id]
+    if actor then
+        table.insert(this.delList, id)
+        actor.Close()
+    end
 end
 
 function ActorManager.Update(deltaTime)
-    for i = #this.delList, 1, -1 do
-        local delId = this.delList[i]
-        if this.actorDic[delId] then
-            table.remove(this.actorDic, delId)
+    if #this.delList > 0 then
+        for i = #this.delList, 1, -1 do
+            local delId = this.delList[i]
+            if this.actorDic[delId] then
+                table.remove(this.actorDic, delId)
+            end
         end
     end
 

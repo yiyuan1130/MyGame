@@ -9,6 +9,9 @@ Time = CS.UnityEngine.Time
 Resources = CS.UnityEngine.Resources
 Mathf = CS.UnityEngine.Mathf
 
+-- debug
+DebugSkillArea = CS.DebugSkillArea
+
 --------------------------
 require "Util/init"
 require "Battle/init"
@@ -25,6 +28,8 @@ function Main:Init()
     InstanceIdManager.Init()
     EventManager.Init()
     ActorManager.Init()
+    SkillManager.Init()
+    BuffManager.Init()
     BattleSceneManager.Init()
 
     this.AddUpdates()
@@ -46,6 +51,18 @@ function Main.RemoveUpdate(cls)
 end
 function Main.AddUpdates()
     this.AddUpdate(ActorManager)
+    this.AddUpdate(SkillManager)
+    this.AddUpdate(BuffManager)
     this.AddUpdate(BattleScene)
     this.AddUpdate(BattleSceneManager)
 end
+
+-- DebugSkillArea.CreateArea({
+--     Position = Vector3(0, 0, 0),
+--     Type = "Rect",
+--     Width = 5,
+--     Height = 3,
+--     Radius = 3,
+--     Angle = 45,
+--     WorldAngle = 0,
+-- })
