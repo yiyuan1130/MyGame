@@ -10,6 +10,11 @@ function BattleScene.OnLoad()
         skillCom:CastSkill(skillId)
         break
     end
+
+    UIManager.ShowPanel(BattlePanel, {})
+
+    -- local battlePanelObj = GameObject.Find("battle_panel")
+    -- local battlePanelCls = BattlePanel.New(battlePanelObj)
 end
 
 function BattleScene.Update(deltaTime)

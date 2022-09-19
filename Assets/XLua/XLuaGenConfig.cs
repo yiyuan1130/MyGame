@@ -52,6 +52,10 @@ public static class XLuaGenConfig
                 typeof(Input),
                 typeof(KeyCode),
                 typeof(DebugSkillArea),
+                typeof(CSForLuaInterface),
+                typeof(UIEventTrigger),
+                typeof(Camera),
+                typeof(RectTransformUtility),
             };
 
     //C#静态调用Lua的配置（包括事件的原型），仅可以配delegate，interface

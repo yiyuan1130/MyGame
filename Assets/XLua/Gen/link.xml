@@ -16,6 +16,7 @@
 		<type fullname="UnityEngine.Mathf" preserve="all"/>
 		<type fullname="UnityEngine.Debug" preserve="all"/>
 		<type fullname="UnityEngine.KeyCode" preserve="all"/>
+		<type fullname="UnityEngine.Camera" preserve="all"/>
 		
 	</assembly>
 
@@ -26,12 +27,19 @@
 
 	<assembly fullname="Assembly-CSharp">
 	    <type fullname="DebugSkillArea" preserve="all"/>
+		<type fullname="CSForLuaInterface" preserve="all"/>
+		<type fullname="UIEventTrigger" preserve="all"/>
 		<type fullname="Tutorial.BaseClass" preserve="all"/>
 		<type fullname="Tutorial.TestEnum" preserve="all"/>
 		<type fullname="Tutorial.DerivedClass" preserve="all"/>
 		<type fullname="Tutorial.ICalc" preserve="all"/>
 		<type fullname="Tutorial.DerivedClassExtensions" preserve="all"/>
 		<type fullname="Tutorial.DerivedClass+TestEnumInner" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="UnityEngine.UIModule">
+	    <type fullname="UnityEngine.RectTransformUtility" preserve="all"/>
 		
 	</assembly>
 

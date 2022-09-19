@@ -7,7 +7,7 @@ end
 
 function BattleSceneManager.Update(deltaTime)
     -- this.TestKeyboardInput()
-    this.TestMouseInput()
+    -- this.TestMouseInput()
     this.instance.Update(deltaTime)
 end
 

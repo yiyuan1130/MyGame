@@ -2,7 +2,7 @@ local InstanceIdManager = ClassStatic("InstanceIdManager")
 InstanceIdManager.IDType = {
     Actor = 0, -- [00000001,10000000)
     Skill = 1, -- [10000001,20000000)
-    Buff = 2,  -- [20000001,30000000)
+    Modifier = 2,  -- [20000001,30000000)
 }
 local this = InstanceIdManager
 function InstanceIdManager.Init()

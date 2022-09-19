@@ -8,12 +8,17 @@ KeyCode = CS.UnityEngine.KeyCode
 Time = CS.UnityEngine.Time
 Resources = CS.UnityEngine.Resources
 Mathf = CS.UnityEngine.Mathf
+UIEventTrigger = CS.UIEventTrigger
+CSForLuaInterface = CS.CSForLuaInterface
+Camera = CS.UnityEngine.Camera
+RectTransformUtility = CS.UnityEngine.RectTransformUtility
 
 -- debug
 DebugSkillArea = CS.DebugSkillArea
 
 --------------------------
 require "Util/init"
+require "UI/init"
 require "Battle/init"
 require "Const/init"
 
@@ -29,7 +34,8 @@ function Main:Init()
     EventManager.Init()
     ActorManager.Init()
     SkillManager.Init()
-    BuffManager.Init()
+    ModifierManager.Init()
+    UIManager.Init()
     BattleSceneManager.Init()
 
     this.AddUpdates()
@@ -52,7 +58,8 @@ end
 function Main.AddUpdates()
     this.AddUpdate(ActorManager)
     this.AddUpdate(SkillManager)
-    this.AddUpdate(BuffManager)
+    this.AddUpdate(ModifierManager)
+    this.AddUpdate(UIManager)
     this.AddUpdate(BattleScene)
     this.AddUpdate(BattleSceneManager)
 end

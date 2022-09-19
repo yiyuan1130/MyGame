@@ -21,6 +21,11 @@ local skill_template1 = {
             },
         },
     },
+    Modifier = {
+        create_effect_buff = {
+
+        },
+    },
 }
 
 return skill_template1

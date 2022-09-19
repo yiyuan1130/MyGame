@@ -67,6 +67,18 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(DebugSkillArea), DebugSkillAreaWrap.__Register);
         
         
+            translator.DelayWrapLoader(typeof(CSForLuaInterface), CSForLuaInterfaceWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(UIEventTrigger), UIEventTriggerWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(UnityEngine.Camera), UnityEngineCameraWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(UnityEngine.RectTransformUtility), UnityEngineRectTransformUtilityWrap.__Register);
+        
+        
             translator.DelayWrapLoader(typeof(Tutorial.BaseClass), TutorialBaseClassWrap.__Register);
         
         
