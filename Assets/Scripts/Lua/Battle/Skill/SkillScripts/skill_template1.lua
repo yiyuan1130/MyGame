@@ -1,4 +1,5 @@
 local skill_template1 = {
+    SkillBehaviour = "",
     Name = "skill_template1",
     Duration = 5,
     Timer = {

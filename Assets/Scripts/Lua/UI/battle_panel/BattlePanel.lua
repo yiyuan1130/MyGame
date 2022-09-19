@@ -45,5 +45,5 @@ function BattlePanel:UpdateInput(pointerEventData)
     local p2 = Vector2(pointerEventData.position.x, pointerEventData.position.y)
     local dir = p2 - p1
     self.input = dir.normalized
-    self.rockerCenter.transform.localPosition = Vector3(self.input.x, self.input.y, 0) * Mathf.Min(dir.magnitude, 150)
+    self.rockerCenter.transform.localPosition = Vector3(self.input.x, self.input.y, 0) * Mathf.Min(dir.magnitude, 121.5)
 end
