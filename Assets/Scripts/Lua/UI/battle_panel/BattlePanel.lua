@@ -13,7 +13,6 @@ end
 function BattlePanel:AddListeners()
     CSForLuaInterface.AddUIEvent(self.rockerBG, UIEventTrigger.EventType.OnPointerDown, function(pointerEventData)
         self.isDraging = true
-        print("BattlePanel:OnPointerDown")
         self:UpdateInput(pointerEventData)
     end)
     CSForLuaInterface.AddUIEvent(self.rockerBG, UIEventTrigger.EventType.OnDrag, function(pointerEventData)
@@ -21,10 +20,8 @@ function BattlePanel:AddListeners()
     end)
     CSForLuaInterface.AddUIEvent(self.rockerBG, UIEventTrigger.EventType.OnPointerUp, function(pointerEventData)
         self.isDraging = false
-        print("BattlePanel:OnPointerUp")
         self.input = Vector2.zero
         self.rockerCenter.transform.localPosition = Vector3.zero
-        -- self:UpdateInput(pointerEventData)
     end)
 end
 
@@ -39,12 +36,8 @@ function BattlePanel:Update(deltaTime)
 end
 
 function BattlePanel:OnRockerDrag(pointerEventData)
-    print("BattlePanel:OnRockerDrag")
     self:UpdateInput(pointerEventData)
     local pos = Vector3(pointerEventData.position.x, pointerEventData.position.y, 0)
-    -- local screenPos = Vector2(pos.x, pos.y)
-    -- local uiPos = RectTransformUtility.ScreenPointToWorldPointInRectangle(self.rockerBG.transform, screenPos, Camera.main, Vector3.zero)
-    -- self.rockerCenter.transform.position = Vector3(pos.x, pos.y, 0)
 end
 
 function BattlePanel:UpdateInput(pointerEventData)
