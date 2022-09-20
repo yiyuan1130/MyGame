@@ -1,5 +1,5 @@
-ActorConst = {
-    ActorType = {
-        Player = 1,
-    },
+local ActorConst = Const("ActorConst")
+
+ActorConst.ActorType = {
+    Player = 1,
 }

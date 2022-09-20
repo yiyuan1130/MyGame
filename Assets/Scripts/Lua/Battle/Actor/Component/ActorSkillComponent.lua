@@ -11,15 +11,15 @@ function ActorSkillComponent:OnCreate(actor)
 end
 
 function ActorSkillComponent:CreateSkills()
-    local skill1 = SkillManager.CreateSkill("skill_template_notarget", SkillConst.SkillType.Skill1, {})
+    local skill1 = SkillManager.CreateSkill("skill_template_notarget", SkillConst.SkillType.Skill1, {caster = self.actor})
     self.skillDic[skill1.id] = skill1
     self.skill1 = skill1
 
-    local skill2 = SkillManager.CreateSkill("skill_template_notarget", SkillConst.SkillType.Skill2, {})
+    local skill2 = SkillManager.CreateSkill("skill_template_notarget", SkillConst.SkillType.Skill2, {caster = self.actor})
     self.skillDic[skill2.id] = skill2
     self.skill2 = skill2
 
-    local skill3 = SkillManager.CreateSkill("skill_template_notarget", SkillConst.SkillType.Skill3, {})
+    local skill3 = SkillManager.CreateSkill("skill_template_notarget", SkillConst.SkillType.Skill3, {caster = self.actor})
     self.skillDic[skill3.id] = skill3
     self.skill3 = skill3
 end
@@ -45,6 +45,7 @@ function ActorSkillComponent:CastSkill(skillType)
     elseif skillType == SkillConst.SkillType.Skill3 then
         skill = self:GetSkill3()
     end
+    print("ActorSkillComponent:CastSkill => ", skillType, skill.id)
     if skill then
         skill:Cast()
     end

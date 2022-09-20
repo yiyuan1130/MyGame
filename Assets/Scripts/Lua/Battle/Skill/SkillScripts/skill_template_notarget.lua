@@ -4,32 +4,51 @@
     在角色正前方直接释放 矩形伤害
 ]]
 local skill_template_notarget = {
-    SkillBehaviour = "",
+    SkillBehaviour = "NoTarget",
     Name = "skill_template_notarget",
     Duration = 5,
     Timer = {
+        -- {
+        --     Time = 1,
+        --     Actions = {
+        --         AttachEffect = {
+        --             EffectName = "skill_effect_test",
+        --             Position = {0, 0, 0},
+        --         },
+        --     },
+        -- },
         {
-            Time = 1,
+            Time = 3,
             Actions = {
-                CreateEffect = {
-                    EffectName = "skill_effect_test",
-                    Position = {0, 0, 0},
-                },
-            },
-        },
-        {
-            Time = 4,
-            Actions = {
-                CreateEffect = {
-                    EffectName = "skill_effect_test",
-                    Position = {5, 5, 5},
+                ApplyModifier = {
+                    Target = "Caster",
+                    ModifierName = "create_effect_buff",
                 },
             },
         },
     },
-    Modifier = {
+    Modifiers = {
         create_effect_buff = {
-
+            Duration = 2,
+            OnCreated = {
+                AttachEffect = {
+                    Duration = 0.5,
+                    EffectName = "skill_effect_test",
+                    Position = {0, 0, 0},
+                },
+            },
+            Timer = {
+                {
+                    Time = 1,
+                    Actions = {
+                        AttachEffect = {
+                            Duration = 0.5,
+                            EffectName = "skill_effect_test",
+                            Position = {0, 0, 5},
+                        },
+                    },
+                },
+            },
         },
     },
 }

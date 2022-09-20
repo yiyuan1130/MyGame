@@ -3,6 +3,7 @@ InstanceIdManager.IDType = {
     Actor = 0, -- [00000001,10000000)
     Skill = 1, -- [10000001,20000000)
     Modifier = 2,  -- [20000001,30000000)
+    Effect = 3, -- [30000001,40000000)
 }
 local this = InstanceIdManager
 function InstanceIdManager.Init()

@@ -1,20 +1,22 @@
 local Skill, base = Class("Skill")
 function Skill:OnCreate(id, data, skillType)
     self.id = id
+    self.caster = data.caster
     self.skillType = skillType
     self.startCasted = false
-    self.curDuration = 0
+    self.template = data.template
+end
+
+function Skill:Cast()
     self.timerList = {}
-    self.maxDuration = data.template.Duration
-    for i = 1, #data.template.Timer do
-        local timer = data.template.Timer[i]
+    for i = 1, #self.template.Timer do
+        local timer = self.template.Timer[i]
         local time = timer.Time
         local actions = timer.Actions
         table.insert(self.timerList, {time = time, actions = actions})
     end
-end
-
-function Skill:Cast()
+    self.curDuration = 0
+    self.maxDuration = self.template.Duration
     self.startCasted = true
 end
 
@@ -23,6 +25,7 @@ function Skill:Update(deltaTime)
         self.curDuration = self.curDuration + deltaTime
         if self.curDuration >= self.maxDuration then
             self.startCasted = false
+            self:StopCast()
             return
         end
         if #self.timerList > 0 then
@@ -37,11 +40,33 @@ function Skill:Update(deltaTime)
     end
 end
 
-function Skill:ActionCreateEffect(data)
-    local effect = ResourcesManager.Load(data.EffectName, ResourceConst.ResType.Effect)
-    local pos = data.Position
-    effect.transform.position = Vector3(pos[1], pos[2], pos[3])
+function Skill:StopCast()
+    self.startCasted = false
 end
 
 function Skill:Close()
 end
+
+------------------------------ Actions ------------------------------
+function Skill:ActionAttachEffect(data)
+    local effect = ResourcesManager.Load(data.EffectName, ResourceConst.ResType.Effect)
+    local pos = data.Position
+    effect.transform.position = Vector3(pos[1], pos[2], pos[3])
+end
+function Skill:ActionApplyModifier(data)
+    local modifierTemplate = self.template.Modifiers[data.ModifierName]
+    local targets = SkillUtil.GetActionTargets(self.caster, data.Target)
+    print("ActionApplyModifier targets => ", #targets)
+    for i = 1, #targets do
+        local target = targets[i]
+        local data = {
+            template = modifierTemplate,
+            preSkill = self,
+            preModifier = nil,
+            caster = self.caster,
+            applyActor = target,
+        }
+        ModifierManager.CreateModifier(data)
+    end
+end
+

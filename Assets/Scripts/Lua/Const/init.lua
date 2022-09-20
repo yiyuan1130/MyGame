@@ -1,4 +1,5 @@
 require "Const/EventId"
 require "Const/SkillConst"
+require "Const/ModifierConst"
 require "Const/ActorConst"
 require "Const/ResourceConst"

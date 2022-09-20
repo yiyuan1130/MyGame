@@ -9,6 +9,7 @@ function ModifierManager.CreateModifier(data)
     local id = InstanceIdManager.GetIdByType(InstanceIdManager.IDType.Modifier)
     local modifier = Modifier.New(id, data)
     this.modifierDic[id] = modifier
+    return modifier
 end
 
 function ModifierManager.RemoveModifier(id)

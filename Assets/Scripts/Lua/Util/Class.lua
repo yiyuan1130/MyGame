@@ -33,3 +33,9 @@ function ClassStatic(name, base)
     _ENV[name] = class
     return class, base
 end
+
+function Const(name)
+    local c = {}
+    _ENV[name] = c
+    return c
+end
