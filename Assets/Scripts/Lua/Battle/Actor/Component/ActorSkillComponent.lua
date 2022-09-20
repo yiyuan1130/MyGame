@@ -39,11 +39,11 @@ end
 function ActorSkillComponent:CastSkill(skillType)
     local skill = nil
     if skillType == SkillConst.SkillType.Skill1 then
-        skill = self.skill1
+        skill = self:GetSkill1()
     elseif skillType == SkillConst.SkillType.Skill2 then
-        skill = self.skill2
+        skill = self:GetSkill2()
     elseif skillType == SkillConst.SkillType.Skill3 then
-        skill = self.skill3
+        skill = self:GetSkill3()
     end
     if skill then
         skill:Cast()
