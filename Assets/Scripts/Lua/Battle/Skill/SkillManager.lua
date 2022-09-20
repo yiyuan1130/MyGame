@@ -6,7 +6,7 @@ function SkillManager.Init()
     this.delList = {}
 end
 
-function SkillManager.CreateSkill(skillScript, data)
+function SkillManager.CreateSkill(skillScript, skillType, data)
     local id = InstanceIdManager.GetIdByType(InstanceIdManager.IDType.Skill)
     local skillTemplate
     if not this.scriptDic[skillScript] then
@@ -16,7 +16,8 @@ function SkillManager.CreateSkill(skillScript, data)
     else
         skillTemplate = this.scriptDic[skillScript]
     end
-    local skill = Skill.New(id, skillTemplate, data)
+    data.template = skillTemplate
+    local skill = Skill.New(id, data, skillType)
     this.skillDic[id] = skill
     return skill
 end
@@ -29,7 +30,7 @@ function SkillManager.RemoveSkill(id)
     end
 end
 
-function SkillManager.Update(delteTime)
+function SkillManager.Update(deltaTime)
     if #this.delList > 0 then
         for i = #this.delList, 1, -1 do
             local id = this.delList[i]
@@ -38,7 +39,7 @@ function SkillManager.Update(delteTime)
         end
     end
     for id, skill in pairs(this.skillDic) do
-        skill:Update(delteTime)
+        skill:Update(deltaTime)
     end
 end
 

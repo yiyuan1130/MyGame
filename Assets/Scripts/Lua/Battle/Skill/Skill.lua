@@ -1,12 +1,13 @@
 local Skill, base = Class("Skill")
-function Skill:OnCreate(id, skillTemplate, data)
+function Skill:OnCreate(id, data, skillType)
     self.id = id
+    self.skillType = skillType
     self.startCasted = false
     self.curDuration = 0
     self.timerList = {}
-    self.maxDuration = skillTemplate.Duration
-    for i = 1, #skillTemplate.Timer do
-        local timer = skillTemplate.Timer[i]
+    self.maxDuration = data.template.Duration
+    for i = 1, #data.template.Timer do
+        local timer = data.template.Timer[i]
         local time = timer.Time
         local actions = timer.Actions
         table.insert(self.timerList, {time = time, actions = actions})

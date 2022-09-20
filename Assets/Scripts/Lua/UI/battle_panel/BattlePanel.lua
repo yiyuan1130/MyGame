@@ -5,6 +5,9 @@ function BattlePanel:OnCreate(gameObject, data)
     self.transform = gameObject.transform
     self.rockerBG = self.transform:Find("rocker/bg").gameObject
     self.rockerCenter = self.transform:Find("rocker/center").gameObject
+    self.skill1 = self.transform:Find("Skill/Skill1").gameObject
+    self.skill2 = self.transform:Find("Skill/Skill2").gameObject
+    self.skill3 = self.transform:Find("Skill/Skill3").gameObject
     self.input = Vector2.zero
     self.isDraging = false
     self:AddListeners()
@@ -23,6 +26,15 @@ function BattlePanel:AddListeners()
         self.input = Vector2.zero
         self.rockerCenter.transform.localPosition = Vector3.zero
     end)
+    CSForLuaInterface.AddUIEvent(self.skill1, UIEventTrigger.EventType.OnPointerClick, function()
+        self:ClickSkillBtn(SkillConst.SkillType.Skill1)
+    end)
+    CSForLuaInterface.AddUIEvent(self.skill2, UIEventTrigger.EventType.OnPointerClick, function()
+        self:ClickSkillBtn(SkillConst.SkillType.Skill2)
+    end)
+    CSForLuaInterface.AddUIEvent(self.skill3, UIEventTrigger.EventType.OnPointerClick, function()
+        self:ClickSkillBtn(SkillConst.SkillType.Skill3)
+    end)
 end
 
 function BattlePanel:RemoveListeners()
@@ -38,6 +50,10 @@ end
 function BattlePanel:OnRockerDrag(pointerEventData)
     self:UpdateInput(pointerEventData)
     local pos = Vector3(pointerEventData.position.x, pointerEventData.position.y, 0)
+end
+
+function BattlePanel:ClickSkillBtn(skillType)
+    EventManager.SendEvent(EventId.GetCastSkill, skillType)
 end
 
 function BattlePanel:UpdateInput(pointerEventData)

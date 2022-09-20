@@ -1,15 +1,39 @@
 local ActorManager = ClassStatic("ActorManager")
 local this = ActorManager
 function ActorManager.Init()
+    this.controllerPlayer = nil
     this.actorDic = {}
     this.delList = {}
+    this.AddEvent()
+end
+
+function ActorManager.AddEvent()
+    EventManager.AddListener(EventId.GetInputMove, this, this.OnGetInpuMove)
+    EventManager.AddListener(EventId.GetCastSkill, this, this.OnGetCastSkill)
+end
+
+function ActorManager.RemoveEvent()
+    EventManager.RemoveListener(EventId.GetInputMove, this, this.OnGetInpuMove)
+    EventManager.RemoveListener(EventId.GetCastSkill, this, this.OnGetCastSkill)
+end
+
+function ActorManager.OnGetInpuMove(this, rockerVec)
+    local rockerMoveCom = this.controllerPlayer:GetComponent(ActorRockerMoveComponent)
+    rockerMoveCom:AddMove(rockerVec)
+end
+function ActorManager.OnGetCastSkill(this, skillType)
+    local skillComponent = this.controllerPlayer:GetComponent(ActorSkillComponent)
+    skillComponent:CastSkill(skillType)
 end
 
 function ActorManager.CreateActor(playerData, actorType)
     local actor
     local id = InstanceIdManager.GetIdByType(InstanceIdManager.IDType.Actor)
     if actorType == ActorConst.ActorType.Player then
-        actor = PlayerActor.New(id, playerData)
+        actor = PlayerActor.New(id, playerData, actorType)
+        if playerData.isController then
+            this.controllerPlayer = actor
+        end
     end
     this.actorDic[id] = actor
     return actor
