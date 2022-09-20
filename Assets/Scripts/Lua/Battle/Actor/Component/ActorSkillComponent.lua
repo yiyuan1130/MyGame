@@ -37,13 +37,12 @@ function ActorSkillComponent:GetSkill3()
 end
 
 function ActorSkillComponent:CastSkill(skillType)
-    print("ActorSkillComponent:CastSkill ==> ", skillType)
     local skill = nil
     if skillType == SkillConst.SkillType.Skill1 then
         skill = self.skill1
-    elseif skillType == SkillConst.SkillType.Skill1 then
+    elseif skillType == SkillConst.SkillType.Skill2 then
         skill = self.skill2
-    elseif skillType == SkillConst.SkillType.Skill1 then
+    elseif skillType == SkillConst.SkillType.Skill3 then
         skill = self.skill3
     end
     if skill then
