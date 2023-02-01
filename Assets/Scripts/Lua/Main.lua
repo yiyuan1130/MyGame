@@ -10,6 +10,7 @@ Resources = CS.UnityEngine.Resources
 Mathf = CS.UnityEngine.Mathf
 UIEventTrigger = CS.UIEventTrigger
 CSForLuaInterface = CS.CSForLuaInterface
+CSBattleCommondManager = CS.BattleCommondManager
 Camera = CS.UnityEngine.Camera
 RectTransformUtility = CS.UnityEngine.RectTransformUtility
 
@@ -38,6 +39,7 @@ function Main:Init()
     EffectManager.Init()
     UIManager.Init()
     BattleSceneManager.Init()
+    BattleCommondManager.Init()
 
     this.AddUpdates()
 end

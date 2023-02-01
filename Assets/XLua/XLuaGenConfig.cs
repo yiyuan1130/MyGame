@@ -53,6 +53,7 @@ public static class XLuaGenConfig
                 typeof(KeyCode),
                 typeof(DebugSkillArea),
                 typeof(CSForLuaInterface),
+                typeof(BattleCommondManager),
                 typeof(UIEventTrigger),
                 typeof(Camera),
                 typeof(RectTransformUtility),

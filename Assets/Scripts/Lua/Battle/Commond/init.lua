@@ -1,0 +1,1 @@
+require "Battle/Commond/init"

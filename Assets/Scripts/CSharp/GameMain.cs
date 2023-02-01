@@ -23,6 +23,8 @@ public class GameMain : MonoBehaviour
         env.DoString("require ('main')");
         luaMain = env.Global.Get<LuaMain>("Main");
         luaMain.Init();
+        BattleCommondManager.Init();
+        BattleRendererManager.Init();
     }
 
     byte[] MyLoader(ref string filePath) {
@@ -41,5 +43,7 @@ public class GameMain : MonoBehaviour
     void Update()
     {
         luaMain.Update(Time.deltaTime);
+        BattleCommondManager.Update();
+        BattleRendererManager.Update();
     }
 }
