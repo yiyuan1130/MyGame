@@ -82,12 +82,14 @@ function Modifier:ActionAttachEffect(template)
 end
 
 function Modifier:ActionKnockUp(data)
-    self.applyActor:GetComponent(ActorKnockUpComponent):ToStart(1.5, 0.04, 0.04)
+    self.applyActor:GetComponent(ActorKnockUpComponent):ToStart(2, 0.2, 0.2)
 end
 
 function Modifier:ActionKnockBack(data)
     local angle = MathUtil.AngleOfTwoVector(self.caster:GetPosition(), self.applyActor:GetPosition())
-    self.applyActor:GetComponent(ActorKnockBackComponent):ToStart(angle, 2, 0.05)
+    local dir = self.applyActor:GetPosition() - self.caster:GetPosition()
+    -- self.applyActor:GetComponent(ActorKnockBackComponent):ToStart(angle, 2, 0.05)
+    self.applyActor:GetComponent(ActorKnockBackComponent):ToStart(dir.normalized, 1, 0.02)
 end
 
 function Modifier:ActionKnockDown(data)

@@ -2,7 +2,7 @@ local StakeActor, base = Class("StakeActor", BaseActor)
 function StakeActor:OnCreate(id, data, playerType)
     base.OnCreate(self, id, data)
     self.position = Vector3(0, 0, 0)
-    self.angle = 0
+    self.angle = 180
     self.speed = 2
     self.playerType = playerType
     self.isController = data.isController

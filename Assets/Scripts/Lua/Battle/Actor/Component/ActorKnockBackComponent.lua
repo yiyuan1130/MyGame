@@ -11,7 +11,8 @@ end
 function ActorKnockBackComponent:Update(deltaTime)
     base.Update(self, deltaTime)
     if self.isStart then
-        self.moveCom:AddMove(MathUtil.AngleToVector(self.angle) * self.konckBackSpeed * deltaTime)
+        -- self.moveCom:AddMove(MathUtil.AngleToVector(self.angle) * self.konckBackSpeed * deltaTime)
+        self.moveCom:AddMove(self.dir * self.konckBackSpeed * deltaTime)
         self.curDuration = self.curDuration + deltaTime
         if self.curDuration >= self.duration then
             self:ToEnd()
@@ -19,8 +20,17 @@ function ActorKnockBackComponent:Update(deltaTime)
     end
 end
 
-function ActorKnockBackComponent:ToStart(angle, distance, time)
-    self.angle = angle
+-- function ActorKnockBackComponent:ToStart(angle, distance, time)
+--     self.angle = angle
+--     self.isStart = true
+--     self.curDuration = 0
+--     self.duration = time
+--     self.distance = distance
+--     self.konckBackSpeed = distance / time
+-- end
+
+function ActorKnockBackComponent:ToStart(dir, distance, time)
+    self.dir = dir
     self.isStart = true
     self.curDuration = 0
     self.duration = time
