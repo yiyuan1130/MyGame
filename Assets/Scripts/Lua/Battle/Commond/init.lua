@@ -1,1 +1,1 @@
-require "Battle/Commond/init"
+require "Battle/Commond/BattleCommondManager"

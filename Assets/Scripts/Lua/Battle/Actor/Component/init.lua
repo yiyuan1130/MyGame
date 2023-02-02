@@ -1,4 +1,7 @@
 require "Battle/Actor/Component/BaseComponent"
 require "Battle/Actor/Component/ActorMoveComponent"
+require "Battle/Actor/Component/ActorKnockBackComponent"
+require "Battle/Actor/Component/ActorKnockDownComponent"
+require "Battle/Actor/Component/ActorKnockUpComponent"
 require "Battle/Actor/Component/ActorRockerMoveComponent"
 require "Battle/Actor/Component/ActorSkillComponent"

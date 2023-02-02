@@ -12,3 +12,15 @@ function MathUtil.VectorToAngle(vector3)
     end
     return angle
 end
+
+function MathUtil.AngleOfTwoVector(vector1, vector2)
+    local dir = vector2 - vector1
+    return MathUtil.VectorToAngle(dir)
+end
+
+function MathUtil.AngleToVector(angle)
+    local deg = Mathf.Rad2Deg * angle
+    local x = Mathf.Sin(deg)
+    local z = Mathf.Cos(deg)
+    return Vector3(x, 0, z)
+end

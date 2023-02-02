@@ -55,8 +55,7 @@ function Skill:ActionAttachEffect(data)
 end
 function Skill:ActionApplyModifier(data)
     local modifierTemplate = self.template.Modifiers[data.ModifierName]
-    local targets = SkillUtil.GetActionTargets(self.caster, data.Target)
-    print("ActionApplyModifier targets => ", #targets)
+    local targets = SkillUtil.GetActionTargets(self.caster, data)
     for i = 1, #targets do
         local target = targets[i]
         local data = {

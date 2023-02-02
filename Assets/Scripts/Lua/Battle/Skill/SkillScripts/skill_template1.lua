@@ -10,6 +10,15 @@ local skill_template1 = {
                     EffectName = "skill_effect_test",
                     Position = {0, 0, 0},
                 },
+                ApplyModifier = {
+                    Target = "AOE",
+                    Rang = {
+                        RangeType = "Circle",
+                        Radius = 5,
+                    },
+                    ActorType = "Stake",
+                    ModifierName = "add_knock_back"
+                },
             },
         },
         {
@@ -23,8 +32,12 @@ local skill_template1 = {
         },
     },
     Modifier = {
-        create_effect_buff = {
-
+        add_knock_back = {
+            OnEventCreated = {
+                {
+                    KnockBack = {},
+                },
+            },
         },
     },
 }

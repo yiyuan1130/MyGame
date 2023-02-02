@@ -34,6 +34,8 @@ function ActorManager.CreateActor(playerData, actorType)
         if playerData.isController then
             this.controllerPlayer = actor
         end
+    elseif actorType == ActorConst.ActorType.Stake then
+        actor = StakeActor.New(id, playerData, actorType)
     end
     this.actorDic[id] = actor
     return actor
@@ -61,6 +63,10 @@ function ActorManager.Update(deltaTime)
         local actor = v
         actor:Update(deltaTime)
     end
+end
+
+function ActorManager.GetActors()
+    return this.actorDic
 end
 
 function ActorManager.Close()

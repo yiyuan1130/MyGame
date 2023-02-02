@@ -15,11 +15,13 @@ function Modifier:OnCreate(id, data)
     self.curDuration = 0
     self.timerList = {}
     self.maxDuration = self.template.Duration or 0
-    for i = 1, #self.template.Timer do
-        local timer = self.template.Timer[i]
-        local time = timer.Time
-        local actions = timer.Actions
-        table.insert(self.timerList, {time = time, actions = actions})
+    if self.template.Timer then
+        for i = 1, #self.template.Timer do
+            local timer = self.template.Timer[i]
+            local time = timer.Time
+            local actions = timer.Actions
+            table.insert(self.timerList, {time = time, actions = actions})
+        end
     end
     self:OnCreated()
 end
@@ -77,4 +79,17 @@ function Modifier:ActionAttachEffect(template)
     -- local effect = ResourcesManager.Load(data.EffectName, ResourceConst.ResType.Effect)
     -- local pos = data.Position
     -- effect.transform.position = Vector3(pos[1], pos[2], pos[3])
+end
+
+function Modifier:ActionKnockUp(data)
+    self.applyActor:GetComponent(ActorKnockUpComponent):ToStart(1.5, 0.04, 0.04)
+end
+
+function Modifier:ActionKnockBack(data)
+    local angle = MathUtil.AngleOfTwoVector(self.caster:GetPosition(), self.applyActor:GetPosition())
+    self.applyActor:GetComponent(ActorKnockBackComponent):ToStart(angle, 2, 0.05)
+end
+
+function Modifier:ActionKnockDown(data)
+    self.applyActor:GetComponent(ActorKnockDownComponent):ToStart()
 end

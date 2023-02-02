@@ -3,6 +3,7 @@ function BaseActor:OnCreate(id, data)
     self.componentDic = {}
     self.id = id
     self.data = data
+    self.actorType = null
 end
 
 function BaseActor:Update(deltaTime)
@@ -33,6 +34,10 @@ function BaseActor:RendererForCreate()
         scale = 1,
     }
     BattleCommondManager.AddBattleRendererCommond_ActorCreate(data)
+end
+
+function BaseActor:GetActorType()
+    return self.actorType
 end
 
 function BaseActor:RendererForDelete()

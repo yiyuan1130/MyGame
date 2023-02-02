@@ -1,10 +1,10 @@
 local PlayerActor, base = Class("PlayerActor", BaseActor)
-function PlayerActor:OnCreate(id, data, playerType)
+function PlayerActor:OnCreate(id, data, actorType)
     base.OnCreate(self, id, data)
     self.position = Vector3(0, 0, 0)
     self.angle = 0
     self.speed = 2
-    self.playerType = playerType
+    self.actorType = actorType
     self.isController = data.isController
     self.gameObject = ResourcesManager.Load("player", ResourceConst.ResType.Actor)
     self.gameObject.name = "Actor" .. self.id

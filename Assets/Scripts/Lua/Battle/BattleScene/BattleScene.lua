@@ -4,7 +4,8 @@ function BattleScene.OnLoad()
     local playerData = {
         isController = true
     }
-    local actor = ActorManager.CreateActor(playerData, ActorConst.ActorType.Player)
+    local playerActor = ActorManager.CreateActor(playerData, ActorConst.ActorType.Player)
+    local stakeActor = ActorManager.CreateActor(playerData, ActorConst.ActorType.Stake)
     -- local skillCom = actor:GetComponent(ActorSkillComponent)
     -- for skillId, skill in pairs(skillCom.skillDic) do
     --     skillCom:CastSkill(skillId)

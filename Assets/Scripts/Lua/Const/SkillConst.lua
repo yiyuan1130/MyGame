@@ -5,6 +5,8 @@ SkillConst.SkillBehaviour = { -- 技能类型
 }
 SkillConst.TargetType = { -- 技能筛选Target类型
     Caster = "Caster", -- 施法者
+    Target = "Target", -- 目标
+    AOE = "AOE", -- 范围
 }
 
 SkillConst.SkillEvents = {}
@@ -14,4 +16,8 @@ SkillConst.SkillType = { -- 技能分类
     Skill1 = "Skill1",
     Skill2 = "Skill2",
     Skill3 = "Skill3",
+}
+
+SkillConst.AOERangeType = {
+    Circle = "Circle",
 }
